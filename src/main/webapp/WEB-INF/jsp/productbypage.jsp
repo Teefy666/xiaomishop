@@ -82,7 +82,7 @@
 			<p>商品管理>商品列表</p>
 		</div>
 		<div id="condition" style="text-align: center">
-			<form action="${pageContext.request.contextPath}/getProductByPage" id="myform">
+			<form action="${pageContext.request.contextPath}/getproductbypage" id="myform">
 				商品名称：<input name="name" id="name" value="${name }">
 				商品类型:<select name="typeid">
 							<option value="-1">请选择</option>
@@ -153,7 +153,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="pre"><a
-									href="${pageContext.request.contextPath}/getProductByPage?page=${pagebean.page-1}">
+									href="${pageContext.request.contextPath}/getproductbypage?page=${pagebean.page-1}">
 										上一页</a></li>
 							</c:otherwise>
 						</c:choose>
@@ -164,7 +164,7 @@
 								</c:when>
 								<c:otherwise>
 									<li class="num"><a
-										href="${pageContext.request.contextPath}/getProductByPage?page=${index}">${index}</a></li>
+										href="${pageContext.request.contextPath}/getproductbypage?page=${index}">${index}</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
@@ -174,7 +174,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="last"><a
-									href="${pageContext.request.contextPath}/getProductByPage?page=${pagebean.page+1}">
+									href="${pageContext.request.contextPath}/getproductbypage?page=${pagebean.page+1}">
 										下一页</a></li>
 							</c:otherwise>
 						</c:choose>

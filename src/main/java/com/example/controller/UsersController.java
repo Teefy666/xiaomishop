@@ -42,4 +42,9 @@ public class UsersController {
         return "main";
     }
 
+    @GetMapping("/logout")
+    public String userLogout(HttpSession session) {
+        session.invalidate();
+        return "login";
+    }
 }

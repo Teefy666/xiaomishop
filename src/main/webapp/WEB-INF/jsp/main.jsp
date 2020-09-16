@@ -49,7 +49,7 @@
 				<div id="lbottom">
 					<ul>
 						<!-- 获取商品@RequestMapping("/getprobypage"),有修改 -->
-						<a href="${pageContext.request.contextPath}/getProductByPage"
+						<a href="${pageContext.request.contextPath}/getproductbypage"
 							target="myright">
 							<li class="two"><span class="glyphicon glyphicon-book"
 								style="color: white;"></span>
