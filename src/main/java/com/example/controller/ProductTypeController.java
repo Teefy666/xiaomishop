@@ -19,6 +19,11 @@ public class ProductTypeController {
     @Resource
     private ProducttypeService productServiceImpl;
 
+    /**
+     * 跳转到类型管理页面
+     * @param model
+     * @return
+     */
     @RequestMapping("/toproducttypepage")
     public String getProductType(Model model) {
         model.addAttribute("producttypes", productServiceImpl.selectProducttype());
