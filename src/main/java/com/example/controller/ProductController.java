@@ -37,4 +37,12 @@ public class ProductController {
         model.addAttribute("pagebean", pageBean);
         return "productbypage";
     }
+
+
+    @GetMapping("/delproduct")
+    public String delProductByid(int id) {
+        productServiceImpl.delProductByiId(id);
+        return "redirect:getProductByPage";
+    }
+
 }

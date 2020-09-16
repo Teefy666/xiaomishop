@@ -16,5 +16,5 @@ public interface ProductService {
 
     PageBean<HashMap<String, Object>> getProductByPage(int page, int pageSize);
 
-
+    int delProductByiId(int id);
 }

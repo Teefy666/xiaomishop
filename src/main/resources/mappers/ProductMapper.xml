@@ -17,4 +17,8 @@
     <select id="getRowCount" resultType="int">
         select count(1) from product
     </select>
+
+    <delete id="delProductById" parameterType="int">
+        delete from product where id = #{id}
+    </delete>
 </mapper>

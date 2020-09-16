@@ -16,4 +16,6 @@ public interface ProductMapper {
     List<HashMap<String, Object>> getProductByPage(@Param("pageStart") int pageStart, @Param("pageSize") int pageSize);
 
     int getRowCount();
+
+    int delProductById(@Param("id") int id);
 }

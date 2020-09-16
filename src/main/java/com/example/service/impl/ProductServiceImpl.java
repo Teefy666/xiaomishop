@@ -41,6 +41,11 @@ public class ProductServiceImpl implements ProductService {
         return pageBean;
     }
 
+    @Override
+    public int delProductByiId(int id) {
+        return productMapper.delProductById(id);
+    }
+
     private int getTotalRowCount() {
         return productMapper.getRowCount();
     }
