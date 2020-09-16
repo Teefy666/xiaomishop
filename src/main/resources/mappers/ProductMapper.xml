@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace配置为数据访问层的接口的 包名.接口名称  -->
+<mapper namespace="com.example.mapper.ProductMapper">
+
+	<select id="getProducts" resultType="java.util.HashMap">
+		select p.*, pt.name typename from product p
+		join producttype pt on p.typeid = pt.id
+	</select>
+
+    <select id="getProductByPage" resultType="java.util.HashMap">
+        select p.*, pt.name typename from product p
+          join producttype pt on p.typeid = pt.id
+          limit #{pageStart}, #{pageSize}
+    </select>
+
+    <select id="getRowCount" resultType="int">
+        select count(1) from product
+    </select>
+</mapper>

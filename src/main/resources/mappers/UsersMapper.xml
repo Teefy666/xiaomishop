@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace配置为数据访问层的接口的 包名.接口名称  -->
+<mapper namespace="com.example.mapper.UsersMapper">
+
+	<!--登录时查询，所以使用select标签  id的值为UsersMapper中方法的名称userLogin 
+		返回的类型为HashMap为实体类java.util.HashMap
+		参数的类型为Users为实体类com.oracle.entity.Users
+		Users userLogin(Users user);
+	 -->
+	<select id="userLogin" parameterType="com.example.entity.Users" resultType="java.util.HashMap">
+		select u.*, r.rolename from users u
+		join role r on u.roleid = r.id
+		where u.uname = #{uname} and u.upass = #{upass}
+	</select>
+
+
+</mapper>
