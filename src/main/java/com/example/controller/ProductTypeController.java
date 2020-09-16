@@ -1,11 +1,11 @@
 package com.example.controller;
 
-import com.example.entity.Product;
 import com.example.entity.Producttype;
 import com.example.service.ProducttypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.Resource;
 
@@ -17,33 +17,45 @@ import javax.annotation.Resource;
 public class ProductTypeController {
 
     @Resource
-    private ProducttypeService productServiceImpl;
+    private ProducttypeService producttypeServiceImpl;
 
     /**
      * 跳转到类型管理页面
      * @param model
      * @return
      */
-    @RequestMapping("/toproducttypepage")
+    @GetMapping("/toproducttypepage")
     public String getProductType(Model model) {
-        model.addAttribute("producttypes", productServiceImpl.selectProducttype());
+        model.addAttribute("producttypes", producttypeServiceImpl.selectProducttype());
         return "producttypenoajax";
     }
 
-    @RequestMapping("/addproducttypepage")
+    @GetMapping("/addproducttypepage")
     public String toAddproducttypePage() {
         return "addproducttype";
     }
 
-    @RequestMapping("/delproducttype")
+    // @GetMapping("/toupdateprotypepage")
+    // public String toUpdateproducttypePage(int id) {
+    //
+    //     return "updateproducttype";
+    // }
+
+    @GetMapping("/delproducttype")
     public String delProTypeById(int id) {
-        productServiceImpl.deleteProducttypeById(id);
+        producttypeServiceImpl.deleteProducttypeById(id);
         return "redirect:/toproducttypepage";
     }
 
-    @RequestMapping("/addprotype")
+    @PostMapping("/addprotype")
     public String addProType(Producttype pt) {
-        productServiceImpl.insertProducttype(pt);
+        producttypeServiceImpl.insertProducttype(pt);
         return "redirect:/toproducttypepage";
     }
+
+    // @PostMapping("/updateprotype")
+    // public String updateProType(Producttype pt) {
+    //     producttypeServiceImpl.insertProducttype(pt);
+    //     return "redirect:/toproducttypepage";
+    // }
 }

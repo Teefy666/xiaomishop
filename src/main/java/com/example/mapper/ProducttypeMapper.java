@@ -1,14 +1,18 @@
 package com.example.mapper;
 import com.example.entity.Producttype;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+
 public interface ProducttypeMapper{
-    long getProducttypeRowCount();
+    //查询全部
     List<Producttype> selectProducttype();
-    Producttype selectProducttypeById(Integer id);
+    //根据id查询
+    Producttype selectProducttypeById(@Param("id") Integer id);
+    //插入
     int insertProducttype(Producttype value);
-    int insertNonEmptyProducttype(Producttype value);
-    int deleteProducttypeById(Integer id);
-    int updateProducttypeById(Producttype enti);
-    int updateNonEmptyProducttypeById(Producttype enti);
+    //删除
+    int deleteProducttypeById(@Param("id") Integer id);
+    //修改
+    int updateProducttypeById(Producttype producttype);
 }
