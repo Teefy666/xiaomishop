@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.entity.PageBean;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,4 +18,6 @@ public interface ProductService {
     PageBean<HashMap<String, Object>> getProductByPage(int page, int pageSize);
 
     int delProductByiId(int id);
+
+    int delBatchProduct(int[] ids);
 }

@@ -5,7 +5,7 @@
 
 	<select id="getProducts" resultType="java.util.HashMap">
 		select p.*, pt.name typename from product p
-		join producttype pt on p.typeid = pt.id
+		left join producttype pt on p.typeid = pt.id
 	</select>
 
     <select id="getProductByPage" resultType="java.util.HashMap">
@@ -20,5 +20,12 @@
 
     <delete id="delProductById" parameterType="int">
         delete from product where id = #{id}
+    </delete>
+
+    <delete id="delBatchProduct">
+        delete from product where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </delete>
 </mapper>

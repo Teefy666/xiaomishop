@@ -46,6 +46,11 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.delProductById(id);
     }
 
+    @Override
+    public int delBatchProduct(int[] ids) {
+        return productMapper.delBatchProduct(ids);
+    }
+
     private int getTotalRowCount() {
         return productMapper.getRowCount();
     }

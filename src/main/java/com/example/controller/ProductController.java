@@ -33,6 +33,12 @@ public class ProductController {
         return "productnopage";
     }
 
+    /**
+     * 分页查询
+     * @param model
+     * @param page
+     * @return
+     */
     @GetMapping("/getproductbypage")
     public String getProductsPage(Model model, @RequestParam(name = "page", defaultValue = "1") int page) {
         int pageSize = 5;
@@ -43,17 +49,37 @@ public class ProductController {
         return "productbypage";
     }
 
-
+    /**
+     * 删除单条
+     * @param id
+     * @return
+     */
     @GetMapping("/delproduct")
     public String delProductByid(int id) {
         productServiceImpl.delProductByiId(id);
         return "redirect:getproductbypage";
     }
 
+    /**
+     * 进入商品添加页面
+     * @param model
+     * @return
+     */
     @GetMapping("/addproductpage")
     public String toAddProductPage(Model model) {
         List<Producttype> list = productTypeServiceImpl.getAllProductType();
         model.addAttribute("ptlist", list);
         return "addproduct";
+    }
+
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
+    @GetMapping("/batchdelproduct")
+    public String delBatchProduct(int[] ids) {
+        productServiceImpl.delBatchProduct(ids);
+        return "redirect:getproductbypage";
     }
 }

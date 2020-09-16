@@ -18,4 +18,6 @@ public interface ProductMapper {
     int getRowCount();
 
     int delProductById(@Param("id") int id);
+
+    int delBatchProduct(@Param("ids") int[] ids);
 }
