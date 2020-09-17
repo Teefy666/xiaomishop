@@ -43,7 +43,16 @@
 		<div id="table">
 			<div id="top">
 				<input type="button" class="btn btn-warning" id="btn1" value="新增商品类型" onclick="addproducttypepage()">
+				&nbsp;&nbsp;&nbsp;
+				<form action="${pageContext.request.contextPath}/getproducttypebypage" method="get">
+					请输入类型的名称<input type="text" name="typename" value="${typename }"/>
+					<input type="submit" value="查询"/>
+				</form>
 			</div>
+
+
+
+			
 			<!--显示没有分页的商品信息-->
 			<div id="middle">
 				<table class="table table-bordered table-striped">
@@ -51,30 +60,66 @@
 						<th>商品类型名称</th>
 						<th>操作</th>
 					</tr>
-					<c:forEach items="${producttypes}" var="pt">
+					<c:forEach items="${pagebean.list}" var="pt">
 						<tr>
 
 							<td>${pt.name}</td>
 							<td>
 								<button type="button" class="btn btn-info myupdate"
-									onclick="pmodify(${pt.id})">修改</button>
+									onclick="ptmodify(${pt.id})">修改</button>
 								<button type="button" class="btn btn-warning" id="mydel"
-									onclick="pdel(${pt.id})">删除</button>
+									onclick="ptdel(${pt.id})">删除</button>
 							</td>
 						</tr>
 					</c:forEach>
 				</table>
+				<!--分页栏-->
+				<div class="footNum">
+					<ul>
+						<c:choose>
+							<c:when test="${pagebean.page eq 1 }">
+								<li class="pre"><a href="javascript:void(0)">上一页</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="pre"><a
+									href="${pageContext.request.contextPath}/getproducttypebypage?page=${pagebean.page-1}&typename=${typename}">
+										上一页</a></li>
+							</c:otherwise>
+						</c:choose>
+						<c:forEach begin="1" end="${pagebean.pages}" step="1" var="index">
+							<c:choose>
+								<c:when test="${pagebean.page eq index}">
+									<li class="num current"><a href="javascript:void(0)">${index}</a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="num"><a
+										href="${pageContext.request.contextPath}/getproducttypebypage?page=${index}&typename=${typename}">${index}</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:choose>
+							<c:when test="${pagebean.page eq pagebean.pages}">
+								<li class="last"><a href="javascript:void(0)">下一页</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="last"><a
+									href="${pageContext.request.contextPath}/getproducttypebypage?page=${pagebean.page+1}&typename=${typename}">
+										下一页</a></li>
+							</c:otherwise>
+						</c:choose>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
     //修改函数
-    function modify(id) {
+    function ptmodify(id) {
         location.href = "${pageContext.request.contextPath}/toupdateprotypepage?id="+id;//get
     }
     //删除函数
-	function pdel(id) {
+	function ptdel(id) {
         if (confirm("确定删除吗")) {
             location.href = "${pageContext.request.contextPath}/delproducttype?id="+id;//get
         }

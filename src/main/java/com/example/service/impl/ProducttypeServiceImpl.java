@@ -2,6 +2,7 @@ package com.example.service.impl;
 
 import java.util.List;
 
+import com.example.entity.PageBean;
 import com.example.entity.Producttype;
 import com.example.mapper.ProducttypeMapper;
 import com.example.service.ProducttypeService;
@@ -41,4 +42,25 @@ public class ProducttypeServiceImpl implements ProducttypeService {
     public int updateProducttypeById(Producttype producttype) {
         return producttypeMapper.updateProducttypeById(producttype);
     }
+
+    @Override
+    public PageBean<Producttype> getProductTypeByPage(int page, int pageSize) {
+        List<Producttype> list =  producttypeMapper.getProductTypeByPage((page-1)*pageSize, pageSize);
+        PageBean<Producttype> pageBean = new PageBean<>();
+        //数据
+        pageBean.setList(list);
+        //页码
+        pageBean.setPage(page);
+        //记录总行数
+        int rowCount = selectTotalRowCount();
+        //总页数
+        pageBean.setPages((int) Math.ceil(rowCount*1.0/pageSize));
+        return pageBean;
+    }
+
+    private int selectTotalRowCount() {
+        return producttypeMapper.selectRowCount();
+    }
+
+
 }

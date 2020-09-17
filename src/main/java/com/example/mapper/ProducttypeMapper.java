@@ -15,4 +15,8 @@ public interface ProducttypeMapper{
     int deleteProducttypeById(@Param("id") Integer id);
     //修改
     int updateProducttypeById(Producttype producttype);
+
+    List<Producttype> getProductTypeByPage(@Param("pageStart") int pageStart, @Param("pageSize") int pageSize);
+
+    int selectRowCount();
 }

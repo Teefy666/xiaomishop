@@ -25,6 +25,12 @@
         update producttype set name=#{name} where id=#{id}
     </update>
 
+    <select id="getProductTypeByPage" resultType="com.example.entity.Producttype">
+        select * from producttype
+        limit #{pageStart}, #{pageSize}
+    </select>
 
-
+    <select id="selectRowCount" resultType="int">
+        select count(1) from producttype
+    </select>
 </mapper>
