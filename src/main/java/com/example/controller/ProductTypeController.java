@@ -62,10 +62,12 @@ public class ProductTypeController {
     }
 
     @GetMapping("/getproducttypebypage")
-    public String getProducttypeByPage(Model model, @RequestParam(name = "page", defaultValue = "1") int page) {
+    public String getProducttypeByPage(Model model, @RequestParam(name = "page", defaultValue = "1") int page,
+                                       @RequestParam(name = "typename", defaultValue = "") String typename) {
         int pageSize = 5;
-        PageBean<Producttype> pagebean = producttypeServiceImpl.getProductTypeByPage(page, pageSize);
+        PageBean<Producttype> pagebean = producttypeServiceImpl.getProductTypeByPage(page, pageSize, typename);
         model.addAttribute("pagebean", pagebean);
+        model.addAttribute("typename", typename);
         return "producttypenoajax";
 
     }

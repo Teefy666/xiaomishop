@@ -16,7 +16,9 @@ public interface ProducttypeMapper{
     //修改
     int updateProducttypeById(Producttype producttype);
 
-    List<Producttype> getProductTypeByPage(@Param("pageStart") int pageStart, @Param("pageSize") int pageSize);
+    List<Producttype> getProductTypeByPage(@Param("pageStart") int pageStart,
+                                           @Param("pageSize") int pageSize,
+                                           @Param("typename") String typename);
 
-    int selectRowCount();
+    int selectRowCount(@Param("typename") String typename);
 }

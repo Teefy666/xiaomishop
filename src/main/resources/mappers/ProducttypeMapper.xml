@@ -27,10 +27,22 @@
 
     <select id="getProductTypeByPage" resultType="com.example.entity.Producttype">
         select * from producttype
+        <where>
+            <if test="typename!=null and typename!=''">
+                <bind name="typename" value="'%'+typename+'%'"></bind>
+                and name like #{typename}
+            </if>
+        </where>
         limit #{pageStart}, #{pageSize}
     </select>
 
     <select id="selectRowCount" resultType="int">
         select count(1) from producttype
+        <where>
+            <if test="typename!=null and typename!=''">
+                <bind name="typename" value="'%'+typename+'%'"></bind>
+                and name like #{typename}
+            </if>
+        </where>
     </select>
 </mapper>

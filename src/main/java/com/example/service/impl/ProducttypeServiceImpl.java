@@ -6,9 +6,6 @@ import com.example.entity.PageBean;
 import com.example.entity.Producttype;
 import com.example.mapper.ProducttypeMapper;
 import com.example.service.ProducttypeService;
-import com.example.mapper.ProducttypeMapper;
-import com.example.entity.Producttype;
-import com.example.service.ProducttypeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -44,22 +41,22 @@ public class ProducttypeServiceImpl implements ProducttypeService {
     }
 
     @Override
-    public PageBean<Producttype> getProductTypeByPage(int page, int pageSize) {
-        List<Producttype> list =  producttypeMapper.getProductTypeByPage((page-1)*pageSize, pageSize);
+    public PageBean<Producttype> getProductTypeByPage(int page, int pageSize, String typename) {
+        List<Producttype> list =  producttypeMapper.getProductTypeByPage((page-1)*pageSize, pageSize, typename);
         PageBean<Producttype> pageBean = new PageBean<>();
         //数据
         pageBean.setList(list);
         //页码
         pageBean.setPage(page);
         //记录总行数
-        int rowCount = selectTotalRowCount();
+        int rowCount = selectTotalRowCount(typename);
         //总页数
         pageBean.setPages((int) Math.ceil(rowCount*1.0/pageSize));
         return pageBean;
     }
 
-    private int selectTotalRowCount() {
-        return producttypeMapper.selectRowCount();
+    private int selectTotalRowCount(String typename) {
+        return producttypeMapper.selectRowCount(typename);
     }
 
 
