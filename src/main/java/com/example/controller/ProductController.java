@@ -40,12 +40,17 @@ public class ProductController {
      * @return
      */
     @GetMapping("/getproductbypage")
-    public String getProductsPage(Model model, @RequestParam(name = "page", defaultValue = "1") int page) {
+    public String getProductsPage(Model model,
+                                  @RequestParam(name = "page", defaultValue = "1") int page,
+                                  @RequestParam(name = "name", defaultValue = "") String name,
+                                  @RequestParam(name = "typeid", defaultValue = "-1") int typeid) {
         int pageSize = 5;
-        PageBean<HashMap<String, Object>> pageBean = productServiceImpl.getProductByPage(page, pageSize);
+        PageBean<HashMap<String, Object>> pageBean = productServiceImpl.getProductByPage(page, pageSize, name, typeid);
         List<Producttype> list = producttypeServiceImpl.selectProducttype();
         model.addAttribute("ptlist", list);
         model.addAttribute("pagebean", pageBean);
+        model.addAttribute("name", name);
+        model.addAttribute("typeid", typeid);
         return "productbypage";
     }
 

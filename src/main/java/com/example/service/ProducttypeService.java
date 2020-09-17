@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.example.entity.PageBean;
 import com.example.entity.Producttype;
-import com.example.entity.Producttype;
 
 public interface ProducttypeService {
     List<Producttype> selectProducttype();

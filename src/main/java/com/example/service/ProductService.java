@@ -15,7 +15,7 @@ public interface ProductService {
     List<HashMap<String, Object>> getProducts();
 
 
-    PageBean<HashMap<String, Object>> getProductByPage(int page, int pageSize);
+    PageBean<HashMap<String, Object>> getProductByPage(int page, int pageSize, String name, int typeid);
 
     int delProductByiId(int id);
 

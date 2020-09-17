@@ -84,7 +84,7 @@
 		</div>
 		<div id="condition" style="text-align: center">
 			<form action="${pageContext.request.contextPath}/getproductbypage" id="myform">
-				商品名称：<input name="name" id="name" value="${name }">
+				商品名称：<input name="name" id="name" value="${name}">
 				商品类型:<select name="typeid">
 							<option value="-1">请选择</option>
 							<c:forEach items="${ptlist}" var="type">

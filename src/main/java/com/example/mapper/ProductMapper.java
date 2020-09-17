@@ -13,9 +13,12 @@ public interface ProductMapper {
 
     List<HashMap<String, Object>> getProducts();
 
-    List<HashMap<String, Object>> getProductByPage(@Param("pageStart") int pageStart, @Param("pageSize") int pageSize);
+    List<HashMap<String, Object>> getProductByPage(@Param("pageStart") int pageStart,
+                                                   @Param("pageSize") int pageSize,
+                                                   @Param("name") String name,
+                                                   @Param("typeid") int typeid);
 
-    int getRowCount();
+    int getRowCount(@Param("name") String name, @Param("typeid") int typeid);
 
     int delProductById(@Param("id") int id);
 

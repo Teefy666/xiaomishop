@@ -10,12 +10,30 @@
 
     <select id="getProductByPage" resultType="java.util.HashMap">
         select p.*, pt.name typename from product p
-          join producttype pt on p.typeid = pt.id
+          left join producttype pt on p.typeid = pt.id
+          <where>
+              <if test="name!=null and name!=''">
+                  <bind name="name" value="'%'+name+'%'"></bind>
+                  and p.name like #{name}
+              </if>
+              <if test="typeid!=-1">
+                  and typeid = #{typeid}
+              </if>
+          </where>
           limit #{pageStart}, #{pageSize}
     </select>
 
     <select id="getRowCount" resultType="int">
         select count(1) from product
+        <where>
+            <if test="name!=null and name!=''">
+                <bind name="name" value="'%'+name+'%'"></bind>
+                and name like #{name}
+            </if>
+            <if test="typeid!=-1">
+                and typeid = #{typeid}
+            </if>
+        </where>
     </select>
 
     <delete id="delProductById" parameterType="int">

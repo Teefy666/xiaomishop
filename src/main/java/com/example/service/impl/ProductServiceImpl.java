@@ -26,8 +26,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public PageBean<HashMap<String, Object>> getProductByPage(int page, int pageSize) {
-        List<HashMap<String, Object>> list = productMapper.getProductByPage((page - 1) * pageSize, pageSize);
+    public PageBean<HashMap<String, Object>> getProductByPage(int page, int pageSize, String name, int typeid) {
+        List<HashMap<String, Object>> list = productMapper.getProductByPage((page - 1) * pageSize, pageSize, name, typeid);
 
         PageBean<HashMap<String, Object>> pageBean = new PageBean<>();
         //数据
@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
         //页码
         pageBean.setPage(page);
         //记录总行数
-        int rowCount = getTotalRowCount();
+        int rowCount = getTotalRowCount(name, typeid);
         //总页数
         pageBean.setPages((int) Math.ceil(rowCount*1.0/pageSize));
         return pageBean;
@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.delBatchProduct(ids);
     }
 
-    private int getTotalRowCount() {
-        return productMapper.getRowCount();
+    private int getTotalRowCount(String name, int typeid) {
+        return productMapper.getRowCount(name, typeid);
     }
 }
