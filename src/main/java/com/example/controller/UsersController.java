@@ -63,4 +63,11 @@ public class UsersController {
         session.invalidate();
         return "login";
     }
+
+    @GetMapping("/getusersbypage")
+    public String getUsersByPage() {
+
+
+        return "";
+    }
 }

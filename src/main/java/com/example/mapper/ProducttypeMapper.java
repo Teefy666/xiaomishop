@@ -18,7 +18,8 @@ public interface ProducttypeMapper{
 
     List<Producttype> getProductTypeByPage(@Param("pageStart") int pageStart,
                                            @Param("pageSize") int pageSize,
+                                           @Param("typeId") int typeId,
                                            @Param("typename") String typename);
 
-    int selectRowCount(@Param("typename") String typename);
+    int selectRowCount(@Param("typeId") int typeId, @Param("typename") String typename);
 }

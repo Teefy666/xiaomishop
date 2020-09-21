@@ -28,6 +28,9 @@
     <select id="getProductTypeByPage" resultType="com.example.entity.Producttype">
         select * from producttype
         <where>
+            <if test="typeId!=-1">
+                and id = #{typeId}
+            </if>
             <if test="typename!=null and typename!=''">
                 <bind name="typename" value="'%'+typename+'%'"></bind>
                 and name like #{typename}
@@ -39,6 +42,9 @@
     <select id="selectRowCount" resultType="int">
         select count(1) from producttype
         <where>
+            <if test="typeId!=-1">
+                and id = #{typeId}
+            </if>
             <if test="typename!=null and typename!=''">
                 <bind name="typename" value="'%'+typename+'%'"></bind>
                 and name like #{typename}

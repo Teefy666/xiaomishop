@@ -103,7 +103,7 @@
 		//异步加载数据 参数的格式为json格式的参数{currentPage:page} 参数的名称currentPage 参数的值page
 		//在springmvc中使用Map集合接受参数，还需要注解@RequestParam
 		//数据返回的对象名称为data,名称可以自定义，返回的格式有时json
-		$.post('${pageContext.request.contextPath}/producttype_list_ajax', {currentPage:page,typeId:tid,typeName:tname}, function(data){
+		$.post('${pageContext.request.contextPath}/producttypelistajax', {currentPage:page,typeId:tid,typeName:tname}, function(data){
 				//先清除前一步的数据tbody
  				$("#producttypelist").html("");
 				//先清除前一步的分页div
@@ -115,7 +115,7 @@
 						$("#producttypelist").append("<tr>"+
 						"<td>"+data.list[i].id+"</td>"+
 						"<td>"+data.list[i].name+"</td>"+
-						"<td><a href='#' onclick=location.href='${pageContext.request.contextPath}/producttypemodify?id="+data.list[i].id+"'>修改</a>"+
+						"<td><a href='#' onclick=location.href='${pageContext.request.contextPath}/toupdateprotypepage?id="+data.list[i].id+"'>修改</a>"+
 						"<a  href='#' class='del'  name="+data.list[i].id+">删除 </a>"+
 						"</td></tr>");	
 					}

@@ -77,7 +77,7 @@
 								class="glyphicon glyphicon-play" style="color: white;"></span></li>
 						</a> --%>
 						<!--ajax分页实现 -->
-						<a href="${pageContext.request.contextPath}/getproducttypebypage"
+						<a href="${pageContext.request.contextPath}/toajaxpage"
 							target="myright">
 							<li class="one"><span class="glyphicon glyphicon-bullhorn"
 								style="color: white"></span>&nbsp;&nbsp;&nbsp;&nbsp;商品类型管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span

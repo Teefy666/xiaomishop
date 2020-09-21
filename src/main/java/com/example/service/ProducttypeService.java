@@ -16,5 +16,5 @@ public interface ProducttypeService {
 
     int updateProducttypeById(Producttype producttype);
 
-    PageBean<Producttype> getProductTypeByPage(int page, int pageSize, String typename);
+    PageBean<Producttype> getProductTypeByPage(int page, int pageSize, int typeId, String typename);
 }
