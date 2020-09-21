@@ -27,7 +27,7 @@ public class UsersController {
      * 跳转到登录界面
      * @return
      */
-    @GetMapping("/index")
+    @GetMapping("/indexpage")
     public String login() {
         return "login";
     }
