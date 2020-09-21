@@ -14,5 +14,63 @@
 		where u.uname = #{uname} and u.upass = #{upass}
 	</select>
 
+	<select id="getUsersByPage" resultType="java.util.HashMap">
+		select u.*, r.rolename rolename from users u
+		join role r on u.roleid = r.id
+		<where>
+			<if test="uname!=null and uname!=''">
+				<bind name="uname" value="'%'+uname+'%'"></bind>
+				and u.realname like #{uname}
+			</if>
+			<if test="roleid!=-1">
+				and u.roleid = #{roleid}
+			</if>
+		</where>
+		limit #{pageStart}, #{pageSize}
+	</select>
 
+	<select id="getRowCount" resultType="int">
+		select count(1) from users
+		<where>
+			<if test="uname!=null and uname!=''">
+				<bind name="uname" value="'%'+uname+'%'"></bind>
+				and realname like #{uname}
+			</if>
+			<if test="roleid!=-1">
+				and roleid = #{roleid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getRoleList" resultType="com.example.entity.Role">
+		select * from role
+	</select>
+
+	<delete id="delUsers" parameterType="int">
+		delete from users where uid = #{id}
+	</delete>
+
+	<delete id="batchDelUsers">
+		delete from users where uid in
+		<foreach collection="ids" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+
+	<select id="getUserById" resultType="com.example.entity.Users">
+		select * from users where uid = #{id}
+	</select>
+
+	<insert id="addUser">
+		insert into users values (null, #{uname}, #{upass}, #{udepartment}, #{realname}, #{roleid}, #{uimage})
+	</insert>
+
+	<update id="updateUser">
+		update users set uname = #{uname},
+		                 udepartment = #{udepartment},
+		                 realname = #{realname},
+						 uimage = #{uimage},
+		                 roleid = #{roleid}
+				where uid = #{uid}
+	</update>
 </mapper>
