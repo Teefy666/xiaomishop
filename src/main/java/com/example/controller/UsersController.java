@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.entity.PageBean;
 import com.example.entity.Users;
 import com.example.service.UsersService;
 import com.example.util.MD5Util;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -65,8 +67,12 @@ public class UsersController {
     }
 
     @GetMapping("/getusersbypage")
-    public String getUsersByPage() {
-
+    public String getUsersByPage(Model model,
+                                 @RequestParam(name = "name", defaultValue = "")String uname,
+                                 @RequestParam(name = "roleid", defaultValue = "-1")int roleid,
+                                 @RequestParam(name = "page", defaultValue = "1") int page) {
+        int pageSize = 5;
+        PageBean<HashMap<String, Object>> pageBean = usersServiceImpl.getUsersByPage(page, pageSize, uname, roleid);
 
         return "";
     }

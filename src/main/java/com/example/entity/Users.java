@@ -5,17 +5,19 @@ public class Users {
     private String upass;
     private String udepartment;
     private String realname;
+    private String uimage;
     private Integer roleid;
     public Users() {
         super();
     }
-    public Users(Integer uid,String uname,String upass,String udepartment,String realname,Integer roleid) {
+    public Users(Integer uid,String uname,String upass,String udepartment,String realname,String uimage,Integer roleid) {
         super();
         this.uid = uid;
         this.uname = uname;
         this.upass = upass;
         this.udepartment = udepartment;
         this.realname = realname;
+        this.uimage = uimage;
         this.roleid = roleid;
     }
     public Integer getUid() {
@@ -56,6 +58,14 @@ public class Users {
 
     public void setRealname(String realname) {
         this.realname = realname;
+    }
+
+    public String getUimage() {
+        return uimage;
+    }
+
+    public void setUimage(String uimage) {
+        this.uimage = uimage;
     }
 
     public Integer getRoleid() {
