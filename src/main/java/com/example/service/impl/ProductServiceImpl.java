@@ -1,6 +1,7 @@
 package com.example.service.impl;
 
 import com.example.entity.PageBean;
+import com.example.entity.Product;
 import com.example.mapper.ProductMapper;
 import com.example.service.ProductService;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,21 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public int delBatchProduct(int[] ids) {
         return productMapper.delBatchProduct(ids);
+    }
+
+    @Override
+    public int addProduct(Product product) {
+        return productMapper.addProduct(product);
+    }
+
+    @Override
+    public Product getProductById(int id) {
+        return productMapper.getProductById(id);
+    }
+
+    @Override
+    public int updateProduct(Product product) {
+        return productMapper.updateProduct(product);
     }
 
     private int getTotalRowCount(String name, int typeid) {

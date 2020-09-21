@@ -19,7 +19,7 @@
 <script type="text/javascript">
          function fileChange(){//注意：此处不能使用jQuery中的change事件，因此仅触发一次，因此使用标签的：onchange属性
             $.ajaxFileUpload({
-                url: '${pageContext.request.contextPath}/produpload',//用于文件上传的服务器端请求地址
+                url: '${pageContext.request.contextPath}/produpload',//用于文件上传的服务器端请求地址文件上传post
                 secureuri: false,//一般设置为false
                 fileElementId: 'upimage',//文件上传控件的id属性  <input type="file" id="upimage" name="upimage" />
                 dataType: 'json',//返回值类型 一般设置为json
@@ -31,7 +31,7 @@
                     //alert(obj.imgurl);
                     imgObj.attr("src",obj.imgurl);
                     imgObj.attr("width","200px");
-                    imgObj.attr("height","100px");
+                    imgObj.attr("height","200px");
                     //将图片img标签追加到imgDiv末尾
                     $("#imgDiv").append(imgObj);
                     //将图片的名称（从服务端返回的JSON中取得）赋值给文件本框
@@ -51,15 +51,15 @@
 
 	<div id="addAll">
 		<div id="nav">
-			<p>商品管理>新增商品</p>
+			<p>用户管理>新增用户</p>
 		</div>
 
 		<div id="table">
-			<form action="${pageContext.request.contextPath}/addproduct" method="post" id="myform">
+			<form action="${pageContext.request.contextPath}/addusers" method="post" id="myform">
 				<table>
 					<tr>
-						<td class="one">商品名称</td>
-						<td><input type="text" name="name" class="two"></td>
+						<td class="one">账号</td>
+						<td><input type="text" name="uname" class="two"></td>
 					</tr>
 					<!--错误提示-->
 					<tr class="three">
@@ -67,8 +67,8 @@
 						<td><span id="pnameerr"></span></td>
 					</tr>
 					<tr>
-						<td class="one">商品介绍</td>
-						<td><input type="text" name="content" class="two"></td>
+						<td class="one">密码</td>
+						<td><input type="text" name="upass" class="two"></td>
 					</tr>
 					<!--错误提示-->
 					<tr class="three">
@@ -76,8 +76,8 @@
 						<td><span id="pcontenterr"></span></td>
 					</tr>
 					<tr>
-						<td class="one">定价</td>
-						<td><input type="number" name="price" class="two"></td>
+						<td class="one">部门</td>
+						<td><input type="text" name="udepartment" class="two"></td>
 					</tr>
 					<!--错误提示-->
 					<tr class="three">
@@ -90,11 +90,12 @@
 						<td><br>
 							<div id="imgDiv" style="display: block; width: 40px; height: 50px;">
 								<!-- 动态生成预览图片 -->
+								
 							</div> <br>
 							<br> <br> <br> 
 							<input type="file" id="upimage" name="upimage" onchange="fileChange()">
 							<!-- 只保存图片的名称到数据库 ，使用隐藏域 （实际存在，但是不显示在页面上）-->
-							<input  id="pimage" name="image">
+							<input type="hidden" id="pimage" name="uimage"> 
 							<span id="imgName"></span>
 							<br>
 						</td>
@@ -105,8 +106,8 @@
 					</tr>
 
 					<tr>
-						<td class="one">总数量</td>
-						<td><input type="number" name="number" class="two"></td>
+						<td class="one">真实姓名</td>
+						<td><input type="text" name="realname" class="two"></td>
 					</tr>
 					<!--错误提示-->
 					<tr class="three">
@@ -116,10 +117,10 @@
 
 
 					<tr>
-						<td class="one">类别</td>
-						<td><select name="typeid">
-								<c:forEach items="${ptlist}" var="type">
-									<option value="${type.id}">${type.name}</option>
+						<td class="one">角色</td>
+						<td><select name="roleid">
+								<c:forEach items="${rolelist}" var="role">
+									<option value="${role.id}">${role.rolename}</option>
 								</c:forEach>
 						</select></td>
 					</tr>

@@ -3,24 +3,26 @@
 <!--namespace配置为数据访问层的接口的 包名.接口名称  -->
 <mapper namespace="com.example.mapper.ProductMapper">
 
-	<select id="getProducts" resultType="java.util.HashMap">
-		select p.*, pt.name typename from product p
-		left join producttype pt on p.typeid = pt.id
-	</select>
+    <select id="getProducts" resultType="java.util.HashMap">
+        select p.*, pt.name typename
+        from product p
+                 left join producttype pt on p.typeid = pt.id
+    </select>
 
     <select id="getProductByPage" resultType="java.util.HashMap">
         select p.*, pt.name typename from product p
-          left join producttype pt on p.typeid = pt.id
-          <where>
-              <if test="name!=null and name!=''">
-                  <bind name="name" value="'%'+name+'%'"></bind>
-                  and p.name like #{name}
-              </if>
-              <if test="typeid!=-1">
-                  and typeid = #{typeid}
-              </if>
-          </where>
-          limit #{pageStart}, #{pageSize}
+        left join producttype pt on p.typeid = pt.id
+        <where>
+            <if test="name!=null and name!=''">
+                <bind name="name" value="'%'+name+'%'"></bind>
+                and p.name like #{name}
+            </if>
+            <if test="typeid!=-1">
+                and typeid = #{typeid}
+            </if>
+        </where>
+        order by date DESC
+        limit #{pageStart}, #{pageSize}
     </select>
 
     <select id="getRowCount" resultType="int">
@@ -37,7 +39,9 @@
     </select>
 
     <delete id="delProductById" parameterType="int">
-        delete from product where id = #{id}
+        delete
+        from product
+        where id = #{id}
     </delete>
 
     <delete id="delBatchProduct">
@@ -46,4 +50,30 @@
             #{id}
         </foreach>
     </delete>
+
+    <insert id="addProduct" parameterType="com.example.entity.Product">
+        insert into product value (null, #{name}, #{content}, #{price}, #{image}, #{number}, #{typeid}, #{date})
+    </insert>
+
+    <select id="getProductById" parameterType="int" resultType="com.example.entity.Product">
+        select *
+        from product
+        where id = #{id}
+    </select>
+
+    <update id="updateProduct" parameterType="com.example.entity.Product">
+        update product
+        <set>
+            name=#{name},
+            content=#{content},
+            price=#{price},
+            image=#{image},
+            number=#{number},
+            typeid=#{typeid},
+            date=#{date}
+        </set>
+        where id=#{id}
+    </update>
+
+
 </mapper>

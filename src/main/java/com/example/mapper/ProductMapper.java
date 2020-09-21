@@ -1,5 +1,6 @@
 package com.example.mapper;
 
+import com.example.entity.Product;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;
@@ -23,4 +24,9 @@ public interface ProductMapper {
     int delProductById(@Param("id") int id);
 
     int delBatchProduct(@Param("ids") int[] ids);
+
+    int addProduct(Product product);
+
+    Product getProductById(int id);
+    int updateProduct(Product product);
 }

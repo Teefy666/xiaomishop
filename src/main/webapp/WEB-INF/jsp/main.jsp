@@ -41,7 +41,7 @@
 			<div id="bleft">
 				<div id="ltop">
 					<div id="lts">
-						<img								<%--		${user.uimage}			--%>
+						<img
 							src="${pageContext.request.contextPath}/resources/image_user/nyy.jpg" /><br />
 						<p style="text-align: center;">${user.realname}</p>
 					</div>
