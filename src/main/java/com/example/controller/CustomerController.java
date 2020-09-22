@@ -63,13 +63,20 @@ public class CustomerController {
 
     @PostMapping("/customerlogin")
     public String doCustomerLogin(String cname, String cpass, HttpSession session, Model model, String yzm) {
+
+        Customer customer = customerServiceImpl.login(cname, MD5Util.getMd5Str(cpass));
+
+        if (Objects.isNull(customer)) {
+            model.addAttribute("error", "账号或密码输入错误");
+            return "customerlogin";
+        }
+
         String rdmCode = (String) session.getAttribute("rdmCode");
 
         if (!rdmCode.equals(yzm)) {
             model.addAttribute("error", "验证码输入错误");
             return "customerlogin";
         }
-        Customer customer = customerServiceImpl.login(cname, MD5Util.getMd5Str(cpass));
 
         session.setAttribute("customer", customer);
         return "redirect:front/index";
