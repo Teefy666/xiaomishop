@@ -61,7 +61,7 @@
 			document.getElementById("errormsg").innerHTML="两次密码不一致";
 			return false;
 		}
-		if(info=="该账号已经存在,请修改"){
+		if(info=="该账号已经存在"){
 			document.getElementById("errormsg").innerHTML="账号已经存在，请修改注册的账号";
 			return false;
 		}
