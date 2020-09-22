@@ -70,6 +70,9 @@
 					<!-- pagebean分页实体 list属性为当前页的数据 -->
 					<c:forEach items="${pagebean.list}" var="o">
 						<tr>
+							<td style="width: 50px;text-align: center;">
+								<input type="checkbox" name="id" value="${o.oid}" style="width: 20px;height: 20px;">
+							</td>
 							<!-- 订单号  -->
 							<td>${o.oid}</td>
 							<!--客户姓名  -->
@@ -99,7 +102,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="pre"><a
-									href="${pageContext.request.contextPath}/getproductbypage?page=${pagebean.page-1}&name=${name}&typeid=${typeid}">
+									href="${pageContext.request.contextPath}/getorderbypage?page=${pagebean.page-1}">
 										上一页</a></li>
 							</c:otherwise>
 						</c:choose>
@@ -110,7 +113,7 @@
 								</c:when>
 								<c:otherwise>
 									<li class="num"><a
-										href="${pageContext.request.contextPath}/getproductbypage?page=${index}&name=${name}&typeid=${typeid}">${index}</a></li>
+										href="${pageContext.request.contextPath}/getorderbypage?page=${index}">${index}</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
@@ -120,7 +123,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="last"><a
-									href="${pageContext.request.contextPath}/getproductbypage?page=${pagebean.page+1}&name=${name}&typeid=${typeid}">
+									href="${pageContext.request.contextPath}/getorderbypage?page=${pagebean.page+1}">
 										下一页</a></li>
 							</c:otherwise>
 						</c:choose>

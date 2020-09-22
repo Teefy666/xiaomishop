@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.entity.PageBean;
 import com.example.entity.Users;
 import com.example.mapper.UsersMapper;
 import com.example.service.UsersService;
@@ -21,5 +22,10 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public HashMap<String, Object> userLogin(Users users) {
         return usersMapper.userLogin(users);
+    }
+
+    @Override
+    public PageBean<HashMap<String, Object>> getUsersByPage(int page, int pageSize, String uname, int roleid) {
+        return null;
     }
 }

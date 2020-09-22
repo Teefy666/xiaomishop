@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace配置为数据访问层的接口的 包名.接口名称  -->
+<mapper namespace="com.example.mapper.OrderMapper">
+
+    <select id="getOrderByPage" resultType="java.util.HashMap">
+        select o.*, c.cname ,a.address from xmorder o
+        left join address a on a.addressId=o.addressId
+        left join customer c on c.cid=o.customerid
+        order by o.odate DESC
+        limit #{pageStart}, #{pageSize}
+    </select>
+    <select id="getRowCount" resultType="int">
+        select count(1) from xmorder
+    </select>
+</mapper>
