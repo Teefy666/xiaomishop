@@ -84,7 +84,7 @@
 		</div>
 		<div id="condition" style="text-align: center">
 			<form action="${pageContext.request.contextPath}/getusersbypage" id="myform">
-				用户名称：<input name="uname" id="uname" value="${uname }">
+				用户名称：<input name="uname" id="uname" value="${uname}">
 				角色类型:<select name="roleid">
 							<option value="-1">请选择</option>
 							<c:forEach items="${rolelist}" var="role">
@@ -123,20 +123,20 @@
 					<c:forEach items="${pagebean.list}" var="u">
 						<tr>
 						    <td style="width: 50px;text-align: center;">
-						    	<input type="checkbox" name="id" value="${u.id}" style="width: 20px;height: 20px;">
+						    	<input type="checkbox" name="id" value="${u.uid}" style="width: 20px;height: 20px;">
 						    </td>
 							<td>${u.uname}</td>
 							<td>${u.udepartment}</td>
 							<td>${u.realname}</td>
 							<td>${u.rolename}</td>
 							<td><img width="55px" height="45px"
-								src="${pageContext.request.contextPath}/resources/image_big/${u.uimage}"></td>
+								src="${pageContext.request.contextPath}/resources/image_user/${u.uimage}"></td>
 
 							<td>
 								<button type="button" class="btn btn-info myupdate"
-									onclick="umodify(${u.id})">修改</button>
+									onclick="umodify(${u.uid})">修改</button>
 								<button type="button" class="btn btn-warning" id="mydel"
-									onclick="udel(${u.id})">删除</button>
+									onclick="udel(${u.uid})">删除</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -190,7 +190,7 @@
     }
     /*修改商品  */
     function umodify(id) {
-        location.href = "${pageContext.request.contextPath}/getusersbyid?id="+id;
+        location.href = "${pageContext.request.contextPath}/updateuserspage?id="+id;
     }
 </script>
 </html>

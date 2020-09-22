@@ -19,7 +19,7 @@
 <script type="text/javascript">
          function fileChange(){//注意：此处不能使用jQuery中的change事件，因此仅触发一次，因此使用标签的：onchange属性
             $.ajaxFileUpload({
-                url: '${pageContext.request.contextPath}/produpload',//用于文件上传的服务器端请求地址文件上传post
+                url: '${pageContext.request.contextPath}/usrupload',//用于文件上传的服务器端请求地址文件上传post
                 secureuri: false,//一般设置为false
                 fileElementId: 'upimage',//文件上传控件的id属性  <input type="file" id="upimage" name="upimage" />
                 dataType: 'json',//返回值类型 一般设置为json
@@ -56,7 +56,7 @@
 
 		<div id="table">
 			<form action="${pageContext.request.contextPath}/updateusers" method="post" id="myform">
-				<input type="hidden" name="id" value="${users.id }"/>
+				<input type="hidden" name="uid" value="${users.uid }"/>
 				<table>
 					<tr>
 						<td class="one">账号</td>
