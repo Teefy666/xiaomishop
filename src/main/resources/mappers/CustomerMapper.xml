@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CustomerMapper">
+    <select id="getCustomerByCname" parameterType="string" resultType="com.example.entity.Customer">
+        select * from customer where cname = #{cname}
+    </select>
+
+    <insert id="registerCustomer" parameterType="com.example.entity.Customer">
+        insert into customer (cname, cpass) values (#{cname}, #{cpass})
+    </insert>
+
+    <select id="login" resultType="com.example.entity.Customer">
+        select * from customer where cname = #{cname} and cpass = #{cpass}
+    </select>
+</mapper>
