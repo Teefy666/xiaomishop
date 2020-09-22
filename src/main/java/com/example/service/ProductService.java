@@ -25,4 +25,6 @@ public interface ProductService {
 
     Product getProductById(int id);
     int updateProduct(Product product);
+
+    List<Product> getProductList();
 }

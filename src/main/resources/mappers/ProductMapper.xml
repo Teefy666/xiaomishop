@@ -75,5 +75,8 @@
         where id=#{id}
     </update>
 
+    <select id="getProductList" resultType="com.example.entity.Product">
+        select * from product order by date DESC limit 5
+    </select>
 
 </mapper>

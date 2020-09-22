@@ -29,4 +29,7 @@ public interface ProductMapper {
 
     Product getProductById(int id);
     int updateProduct(Product product);
+
+    List<Product> getProductList();
+
 }
