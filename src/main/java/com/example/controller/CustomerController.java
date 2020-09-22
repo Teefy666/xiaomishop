@@ -42,7 +42,7 @@ public class CustomerController {
         if (Objects.isNull(customer)) {
             result.put("info", "该用户可以使用");
         } else {
-            result.put("info", "该账号已存在");
+            result.put("info", "该账号已经存在");
         }
         return result;
     }
