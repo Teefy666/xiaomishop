@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -64,12 +65,14 @@
 								class="glyphicon glyphicon-play" style="color: white;"></span></li>
 						</a>
 						<!-- 获取用户@RequestMapping("/getusers") -->
-						<a href="${pageContext.request.contextPath}/getusersbypage"
-							target="myright">
-							<li class="one"><span class="glyphicon glyphicon-user"
-								style="color: white;"></span>&nbsp;&nbsp;&nbsp;&nbsp;员工管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-								class="glyphicon glyphicon-play" style="color: white;"></span></li>
-						</a>
+						<c:if test="${sessionScope.users.rolename == '管理员'}">
+							<a href="${pageContext.request.contextPath}/getusersbypage"
+								target="myright">
+								<li class="one"><span class="glyphicon glyphicon-user"
+									style="color: white;"></span>&nbsp;&nbsp;&nbsp;&nbsp;员工管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+									class="glyphicon glyphicon-play" style="color: white;"></span></li>
+							</a>
+						</c:if>
 <%-- 						<a href="${pageContext.request.contextPath}/getproducttypebypage"
 							target="myright">
 							<li class="one"><span class="glyphicon glyphicon-bullhorn"

@@ -120,6 +120,7 @@ hr {border: 1px solid #EDEDED;}
 	function add(){
 		var obj = document.getElementById("number");
 		var number = obj.value;
+		if(number < ${product.number})
 		obj.value = parseInt(number) + 1;
 		document.getElementById("totalprice").innerHTML = "${product.price}" * obj.value + "&nbsp;元";
 	}

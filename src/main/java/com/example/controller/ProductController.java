@@ -150,4 +150,11 @@ public class ProductController {
         productServiceImpl.updateProduct(product);
         return "redirect:/getproductbypage";
     }
+
+    @GetMapping("/getproductdetail")
+    public String getProductDetail(int id, Model model) {
+        Product product = productServiceImpl.getProductById(id);
+        model.addAttribute("product", product);
+        return "productdetail";
+    }
 }
