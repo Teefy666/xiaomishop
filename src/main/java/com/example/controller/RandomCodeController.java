@@ -10,15 +10,16 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class RandomCodeController{
+public class RandomCodeController {
 
-    @RequestMapping(value="/randomcode",method=RequestMethod.GET)
-    public void getAuthCode(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws IOException {
+    @RequestMapping(value = "/randomcode", method = RequestMethod.GET)
+    public void getAuthCode(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
         int width = 63;
         int height = 37;
         Random random = new Random();
@@ -34,10 +35,10 @@ public class RandomCodeController{
         Graphics g = image.getGraphics();
         //Graphics类的样式
         g.setColor(this.getRandColor(200, 250));
-        g.setFont(new Font("Times New Roman",0,28));
+        g.setFont(new Font("Times New Roman", 0, 28));
         g.fillRect(0, 0, width, height);
         //绘制干扰线
-        for(int i=0;i<40;i++){
+        for (int i = 0; i < 40; i++) {
             g.setColor(this.getRandColor(130, 200));
             int x = random.nextInt(width);
             int y = random.nextInt(height);
@@ -48,11 +49,11 @@ public class RandomCodeController{
 
         //绘制字符
         String strCode = "";
-        for(int i=0;i<4;i++){
+        for (int i = 0; i < 4; i++) {
             String rand = String.valueOf(random.nextInt(10));
             strCode = strCode + rand;
-            g.setColor(new Color(20+random.nextInt(110),20+random.nextInt(110),20+random.nextInt(110)));
-            g.drawString(rand, 13*i+6, 28);
+            g.setColor(new Color(20 + random.nextInt(110), 20 + random.nextInt(110), 20 + random.nextInt(110)));
+            g.drawString(rand, 13 * i + 6, 28);
         }
         //将字符保存到session中用于前端的验证
         session.setAttribute("rdmCode", strCode);
@@ -64,16 +65,18 @@ public class RandomCodeController{
     }
 
     //创建颜色
-    Color getRandColor(int fc,int bc){
+    Color getRandColor(int fc, int bc) {
         Random random = new Random();
-        if(fc>255)
+        if (fc > 255) {
             fc = 255;
-        if(bc>255)
+        }
+        if (bc > 255) {
             bc = 255;
+        }
         int r = fc + random.nextInt(bc - fc);
         int g = fc + random.nextInt(bc - fc);
         int b = fc + random.nextInt(bc - fc);
-        return new Color(r,g,b);
+        return new Color(r, g, b);
     }
 
 }

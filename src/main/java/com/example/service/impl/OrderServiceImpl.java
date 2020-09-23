@@ -3,13 +3,14 @@ package com.example.service.impl;
 import com.example.entity.PageBean;
 import com.example.mapper.OrderMapper;
 import com.example.service.OrderService;
-import org.aspectj.weaver.patterns.HasThisTypePatternTriedToSneakInSomeGenericOrParameterizedTypePatternMatchingStuffAnywhereVisitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
-
+/**
+ * MQ
+ */
 @Service
 public class OrderServiceImpl implements OrderService {
     @Autowired

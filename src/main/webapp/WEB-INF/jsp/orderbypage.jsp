@@ -55,9 +55,9 @@
 			<div id="middle">
 				<table class="table table-bordered table-striped">
 					<tr>
-					    <th style="width: 50px;text-align: center;">
-					    	<input type="checkbox" style="width: 20px;height: 20px;" id="checkAll">
-					    </th>
+					    <%--<th style="width: 50px;text-align: center;">--%>
+					    	<%--<input type="checkbox" style="width: 20px;height: 20px;" id="checkAll">--%>
+					    <%--</th>--%>
 						<th>订单号</th>
 						<th>客户姓名</th>
 						<th>地址</th>
@@ -65,14 +65,14 @@
 						<th>备注</th>
 						<th>订单状态</th>
 						<th>时间</th>
-						<th>操作</th>
+						<%--<th>操作</th>--%>
 					</tr>
 					<!-- pagebean分页实体 list属性为当前页的数据 -->
 					<c:forEach items="${pagebean.list}" var="o">
 						<tr>
-							<td style="width: 50px;text-align: center;">
-								<input type="checkbox" name="id" value="${o.oid}" style="width: 20px;height: 20px;">
-							</td>
+							<%--<td style="width: 50px;text-align: center;">--%>
+								<%--<input type="checkbox" name="id" value="${o.oid}" style="width: 20px;height: 20px;">--%>
+							<%--</td>--%>
 							<!-- 订单号  -->
 							<td>${o.oid}</td>
 							<!--客户姓名  -->
@@ -86,9 +86,9 @@
 							<!-- 订单状态 -->
 							<td>${o.status}</td>
 							<td><fmt:formatDate value="${o.odate}" pattern="yyyy-MM-dd hh:mm:ss"/></td>
-							<td>
-							<!-- 详情 （选做） -->
-							<button type="button" class="btn btn-info myupdate" onclick="odetail(${o.oid})">详情</button>
+							<%--<td>--%>
+							<%--<!-- 详情 （选做） -->--%>
+							<%--<button type="button" class="btn btn-info myupdate" onclick="odetail(${o.oid})">详情</button>--%>
 							</td>
 						</tr>
 					</c:forEach>

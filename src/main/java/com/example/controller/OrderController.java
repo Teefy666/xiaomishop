@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 
+/**
+ * MQ
+ */
 @Controller
 public class OrderController {
     @Autowired

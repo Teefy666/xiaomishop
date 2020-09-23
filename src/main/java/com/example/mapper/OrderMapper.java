@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * MQ
+ */
 public interface OrderMapper {
     List<HashMap<String, Object>> getOrderByPage(@Param("pageStart") int pageStart,
                                                  @Param("pageSize") int pageSize);
