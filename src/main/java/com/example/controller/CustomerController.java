@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -34,6 +35,7 @@ public class CustomerController {
         return "customerlogin";
     }
 
+    @ResponseBody
     @PostMapping("/docheckcname")
     public HashMap<String, String> doCheckCname(String cname) {
         HashMap<String, String> result = new HashMap<>();
@@ -42,7 +44,7 @@ public class CustomerController {
         if (Objects.isNull(customer)) {
             result.put("info", "该用户可以使用");
         } else {
-            result.put("info", "该账号已存在");
+            result.put("info", "该账号已经存在");
         }
         return result;
     }
@@ -63,13 +65,20 @@ public class CustomerController {
 
     @PostMapping("/customerlogin")
     public String doCustomerLogin(String cname, String cpass, HttpSession session, Model model, String yzm) {
+
+        Customer customer = customerServiceImpl.login(cname, MD5Util.getMd5Str(cpass));
+
+        if (Objects.isNull(customer)) {
+            model.addAttribute("error", "账号或密码输入错误");
+            return "customerlogin";
+        }
+
         String rdmCode = (String) session.getAttribute("rdmCode");
 
         if (!rdmCode.equals(yzm)) {
             model.addAttribute("error", "验证码输入错误");
             return "customerlogin";
         }
-        Customer customer = customerServiceImpl.login(cname, MD5Util.getMd5Str(cpass));
 
         session.setAttribute("customer", customer);
         return "redirect:front/index";
