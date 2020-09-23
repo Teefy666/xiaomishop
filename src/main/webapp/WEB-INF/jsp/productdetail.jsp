@@ -143,14 +143,14 @@ hr {border: 1px solid #EDEDED;}
 	
 	//显示购物车
 	function showCarShop(){
-/* 		if("${customer}" == ''){
+ 		if("${customer}" == ''){
 			alert("你还没有登录，请先登录");
 			document.getElementById("showcar").setAttribute("href",
 					"${pageContext.request.contextPath}/tocustomerloginpage");
-		}else{ */
+		}else{
 			document.getElementById("showcar").setAttribute("href",
 					"${pageContext.request.contextPath}/showcarshopbycustomerid?customerid=${customer.cid}")
-/* 		} */
+ 		}
 	}
 	
 </script>
