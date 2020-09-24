@@ -174,7 +174,7 @@ hr {border: 1px solid #EDEDED;}
 			</div>
 			<div id="topbar_right">
 				<c:if test="${empty customer }">
-					<a href="login.jsp">登陆</a>
+					<a href="${pageContext.request.contextPath}/tocustomerloginpage">登陆</a>
 					<span class="sep">|</span>
 				</c:if>
 				<c:if test="${not empty customer }">
@@ -186,7 +186,7 @@ hr {border: 1px solid #EDEDED;}
 					<a href="${pageContext.request.contextPath}/showcarshopbycustomerid?customerid=${customer.cid}" target="_blank">购物车</a>
 					<span class="sep">|</span>
 				</c:if>
-				<a href="customerlogout" target="_blank">注册</a><span class="sep">|</span>
+				<a href="${pageContext.request.contextPath}/toregisterpage" target="_blank">注册</a><span class="sep">|</span>
 			</div>
 		</div>
 		<div id="menu">

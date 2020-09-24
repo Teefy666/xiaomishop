@@ -23,4 +23,13 @@
         update carshop set numbers = #{numbers}
         where productid = #{pid} and customerid = #{customerid}
     </update>
+
+    <delete id="deleteCarShop" parameterType="int">
+        delete from carshop where id = #{cid}
+    </delete>
+
+    <update id="updateNumbers">
+        update carshop set numbers = #{num} where id = #{cid}
+    </update>
+
 </mapper>

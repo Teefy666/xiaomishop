@@ -36,5 +36,15 @@ public class CarShopServiceImpl implements CarShopService {
         return carShopMapper.getCarShops(customerid);
     }
 
+    @Override
+    public int deleteCarShop(int cid) {
+        return carShopMapper.deleteCarShop(cid);
+    }
+
+    @Override
+    public int updateNumbers(int cid, int num) {
+        return carShopMapper.updateNumbers(cid, num);
+    }
+
 
 }

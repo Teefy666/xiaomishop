@@ -15,7 +15,7 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<script language="javascript" src="js/jquery-1.8.0.min.js"></script>
+<script language="javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 	/* 加减商品数量 */
 	$("[name=jian]").live("click",function(){
@@ -105,7 +105,7 @@ a:hover {color: #FF7E00;}
 			</div>
 			<div id="topbar_right">
 				<c:if test="${empty customer }">
-					<a href="login.jsp">登陆</a>
+					<a href="${pageContext.request.contextPath}/tocustomerloginpage">登陆</a>
 					<span class="sep">|</span>
 				</c:if>
 				<c:if test="${not empty customer }">
@@ -117,7 +117,7 @@ a:hover {color: #FF7E00;}
 					<a href="${pageContext.request.contextPath}/showcarshopbycustomerid?customerid=${customer.cid}" target="_blank">购物车</a>
 					<span class="sep">|</span>
 				</c:if>
-				<a href="customerlogout" target="_blank">注册</a><span class="sep">|</span>
+				<a href="${pageContext.request.contextPath}/toregisterpage" target="_blank">注册</a><span class="sep">|</span>
 			</div>
 		</div>
 	</div>
@@ -173,13 +173,13 @@ a:hover {color: #FF7E00;}
 						<c:if test="${car.numbers==1 }">
 						-
 						</c:if>
-						<input type="text" readonly="readonly" value="${car.numbers }" style="width: 40px; height: 30px; line-height: 30px;border: 0px;text-align: center;font-size: 26px;color:#FF7E00 "/>
+						<input type="text" id="numbers" value="${car.numbers }" style="width: 40px; height: 30px; line-height: 30px;border: 0px;text-align: center;font-size: 26px;color:#FF7E00 "/>
 						<a href="javascript:changeN(${car.id},${car.numbers+1})">+</a>
 					</td>
 					<td width="200" style="color: #FF7E00;">${car.price*car.numbers }元</td>
 					<c:set var="total" value="${total+car.price*car.numbers }"></c:set>
 					<td width="100">
-						<a href="${(pageContext.request.contextPath)}/deletecarshop?cid=${car.cid}&customerid=${customer.cid}" onclick="return confirm('确定删除吗？')" style="display: block; background-color: #EDEDED;width: 100px; height: 40px; line-height: 40px;"
+						<a href="${(pageContext.request.contextPath)}/deletecarshop?cid=${car.id}&customerid=${sessionScope.customer.cid}" onclick="return confirm('确定删除吗？')" style="display: block; background-color: #EDEDED;width: 100px; height: 40px; line-height: 40px;"
 							onmouseover="this.style.backgroundColor='red';" onmouseout="this.style.backgroundColor='#EDEDED';">
 							删除</a></td>
 				</tr>
@@ -190,14 +190,7 @@ a:hover {color: #FF7E00;}
 
 	<script type="text/javascript">
 		function changeN(cid,num) {
-			$.ajax({
-				type : "post",
-				url : "${pageContext.request.contextPath}/changenumber",
-				data:"cid="+cid+"&num="+num,
-				success : function() {
-					window.location.href="";
-				}
-			});
+			window.location.href="${pageContext.request.contextPath}/changenumber?cid="+cid+"&num="+num+"&customerid=${sessionScope.customer.cid}";//get
 		}
 	</script>
 	

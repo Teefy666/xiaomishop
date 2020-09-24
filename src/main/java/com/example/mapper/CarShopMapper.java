@@ -22,4 +22,8 @@ public interface CarShopMapper {
     int updateCarShop(@Param("customerid") int customerid,
                       @Param("pid") int pid,
                       @Param("numbers") int numbers);
+
+    int deleteCarShop(@Param("cid") int cid);
+
+    int updateNumbers(@Param("cid") int cid, @Param("num") int num);
 }

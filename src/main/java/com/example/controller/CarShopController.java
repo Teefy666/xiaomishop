@@ -5,6 +5,8 @@ import com.example.service.CarShopService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -35,8 +37,15 @@ public class CarShopController {
         return "carshop";
     }
 
-    // @GetMapping("/deletecarshop")
-    // public String deleteCarShop(int customerid) {
-    //
-    // }
+    @GetMapping("/deletecarshop")
+    public String deleteCarShop(int cid, int customerid) {
+        carShopServiceImpl.deleteCarShop(cid);
+        return "redirect:/showcarshopbycustomerid?customerid="+customerid;
+    }
+
+    @GetMapping("/changenumber")
+    public String doChangeNumber(int cid, int num, int customerid) {
+        carShopServiceImpl.updateNumbers(cid, num);
+        return "redirect:/showcarshopbycustomerid?customerid="+customerid;
+    }
 }

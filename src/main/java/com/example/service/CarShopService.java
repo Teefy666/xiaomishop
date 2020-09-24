@@ -14,4 +14,7 @@ public interface CarShopService {
 
     List<HashMap<String, Object>> getCarShops(int customerid);
 
+    int deleteCarShop(int cid);
+
+    int updateNumbers(int cid, int num);
 }
